@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zadatak 4</title>
+    <link href="resursi/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body ng-app="myApp" ng-controller="MyCtrl as vm">
+
+    <div class="container">
+            <form>
+                Naziv:<input class="form-control" type="text" ng-model="vm.obj.naziv"><br>
+                Godina berbe: <input class="form-control" type="number" ng-model="vm.obj.berba"><br>
+                Cena: <input class="form-control" type="number" ng-model="vm.obj.cena"><br>
+                <button ng-click="vm.add()">Dodaj</button>
+            </form>
+
+            <input type="text" ng-model="vm.search" placeholder="Filtriranje">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Godina berbe</th>
+                        <th>cena</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="el in vm.vina|filter:vm.search track by $index">
+                        <td>{{el.naziv}}</td>
+                        <td>{{el.godina}}</td>
+                        <td>{{el.cena}}</td>
+                        <td><a ng-click="vm.brisi(el)">brisi</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="resursi/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="resursi/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
